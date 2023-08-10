@@ -1,0 +1,166 @@
+body, div, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #DCEAF8, #F0F0F5);
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 24px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .navbar-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 100px auto 20px;
+    min-width: 800px;
+  }
+
+  .search-bar {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #424242;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 16px;
+  }
+
+  .search-bar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #424242;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 16px 0px;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .card div.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .card div.card-content {
+    max-height: 76px;
+    overflow: hidden;
+  }
+
+  .add-post-banner {
+    background-color: #f0f0f0; 
+    color: #424242; 
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 440px;
+  }
+
+  .add-post-banner h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .add-post-form {
+    max-width: 95%; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .add-post-form label {
+    font-size: 1.2rem;
+  }
+
+  .add-post-form input,
+  .add-post-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .add-post-form button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .add-post-form button:hover {
+    background-color: #555;
+  }
+
+  @media (max-width: 600px) {
+    .navbar-inner {
+      text-align: center;
+    }
+
+    .navbar a {
+      margin: 5px 8;
+    }
+
+    .container {
+      margin: 80px auto 20px;
+      padding: 15px;
+    }
+  }

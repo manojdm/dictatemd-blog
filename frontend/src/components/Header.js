@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
@@ -6,8 +7,8 @@ const Header = () => {
 			<div className="navbar-inner">
 				<div>DictateMD</div>
 				<nav>
-					<a href="#">Home</a>
-					<a href="#">Add Post</a>
+					<Link to="/">Home</Link>
+					<Link to="/new">Add Post</Link>
 				</nav>
 			</div>
 		</div>

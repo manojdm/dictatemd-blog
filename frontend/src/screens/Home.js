@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogs } from "../Actions/blogActions";
+import parse from "html-react-parser";
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Home = () => {
 		}
 	}, [loading, success, data]);
 
-	const handleSubmit = e => {
+	const handleSubmit = async (e, searchTerm) => {
 		e.preventDefault();
 
 		const newPosts = data.filter((post, idx) => {
@@ -31,14 +32,32 @@ const Home = () => {
 			);
 		});
 
-		setPosts(newPosts);
+		const updatedPosts = updatePostsWithHighlights(newPosts, searchTerm);
 
-		console.log(newPosts);
+		setPosts(updatedPosts);
 	};
 
-	useEffect(() => {
-		console.log(posts);
-	}, [posts]);
+	const updatePostsWithHighlights = (items, term) => {
+		const newItems = items.map(item => {
+			const { title, content } = item;
+
+			const highlightedTitle = title.replace(
+				new RegExp(term, "gi"),
+				`<span class="highlight">${term}</span>`
+			);
+
+			const highlightedContent = content.replace(
+				new RegExp(term, "gi"),
+				`<span class="highlight">${term}</span>`
+			);
+
+			return { ...item, title: highlightedTitle, content: highlightedContent };
+		});
+
+		return newItems;
+	};
+
+	useEffect(() => {}, [posts]);
 
 	return (
 		<div className="container">
@@ -48,7 +67,7 @@ const Home = () => {
 					value={searchTerm}
 					onChange={e => {
 						setSearchTerm(e.target.value);
-						handleSubmit(e);
+						handleSubmit(e, e.target.value);
 					}}
 					type="text"
 					placeholder="Search..."
@@ -61,10 +80,12 @@ const Home = () => {
 					posts &&
 					posts.map(post => (
 						<div className="card">
-							<div className="card-title">{post?.title}</div>
-							<div className="card-content">{post?.content}</div>
+							<div className="card-title">{parse(post?.title)}</div>
+							<div className="card-content">{parse(post?.content)}</div>
 						</div>
 					))}
+
+				{loading && "Loading, Please wait...."}
 			</div>
 		</div>
 	);

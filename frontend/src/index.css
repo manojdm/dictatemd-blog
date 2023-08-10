@@ -15,6 +15,10 @@ body, div, p, ul, li {
     justify-content: center;
   }
 
+  .highlight {
+    background: yellow;
+  }
+
   .navbar {
     background-color: #333;
     color: #fff;

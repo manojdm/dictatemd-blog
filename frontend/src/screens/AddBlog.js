@@ -1,18 +1,28 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlog } from "../Actions/blogActions";
+import { useNavigate } from "react-router";
 
 const AddBlog = () => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		dispatch(addBlog({ title, content }));
 	};
+
+	const { loading, success } = useSelector(state => state.addBlog);
+
+	useEffect(() => {
+		if (!loading && success) {
+			navigate("/");
+		}
+	}, [loading, success]);
 
 	return (
 		<div className="add-post-banner">
